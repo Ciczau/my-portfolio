@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 
-import MainScreen from 'containers/MainScreen';
 import Header from 'components/Header';
 import LandingPage from 'containers/LandingPage';
 

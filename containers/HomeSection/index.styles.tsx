@@ -20,4 +20,15 @@ export const Title = styled.div`
         transition: all 0.3s ease;
         transform: translateY(-5px);
     }
+    @media screen and (max-width: 767px) {
+        font-size: 20px;
+    }
+
+`
+
+export const Desc = styled(motion.div)`
+    display: flex;
+    @media screen and (max-width: 767px){
+        font-size: 10px;
+    }
 `

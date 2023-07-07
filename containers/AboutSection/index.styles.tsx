@@ -2,15 +2,18 @@ import styled, { keyframes } from 'styled-components'
 import {motion } from 'framer-motion'
 export const Wrapper = styled(motion.div)`
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Poiret One";
+    transition: all 0.5s ease;
 `
 
 export const ExperienceWrapper = styled.div`
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 `
 export const ExperienceContainer = styled.div`
     width: 300px;

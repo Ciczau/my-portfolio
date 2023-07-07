@@ -2,10 +2,14 @@ import { useState } from 'react';
 import * as S from './index.styles'
 import { FaUser, FaReact, FaNodeJs, FaMobileAlt, FaBook, FaLessThan } from 'react-icons/fa'
 import { animate, m, useTransform, useViewportScroll } from 'framer-motion';
-
+import { useInView } from 'react-intersection-observer'
 const AboutSection = () => {
     const [mouseEnter, setMouseEnter] = useState<Array<boolean>>([false, false]);
     const { scrollYProgress} = useViewportScroll();
+    const [ref, inView] = useInView({
+        threshold: 0.2,
+        triggerOnce: true
+    })
     const scale = useTransform(scrollYProgress, [0, 0.3], [1.3, 1]);
     const ExperienceItems: Array<{icon: React.ReactNode, description: string, animate: boolean}> = [
         {
@@ -38,8 +42,8 @@ const AboutSection = () => {
         console.log(tab)
     }
     return (
-        <S.Wrapper id="about" style={{scale}}>
-            <S.ExperienceWrapper>
+        <S.Wrapper id="about" style={{scale, opacity: inView ? "1" : "0"}} >
+            <S.ExperienceWrapper ref={ref}>
                 {ExperienceItems.map((exp, index) => {
                     return (
                         <S.ExperienceContainer onMouseEnter={() => handleMouse(index, true)} onMouseLeave={() => handleMouse(index, false)} animate={mouseEnter[index]}>

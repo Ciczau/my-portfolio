@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components'
-import { motion } from 'framer-motion'
+import styled, { keyframes } from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Wrapper = styled.div`
     color: white;
@@ -13,22 +13,21 @@ export const Wrapper = styled.div`
     background-color: #5756564a;
     box-shadow: 0px 0px 5px 3px #aaa5a528;
     padding: 5px;
-  
+
     align-items: center;
-`
+`;
 export const Menu = styled.div`
     display: flex;
     height: 50%;
     width: 100%;
-`
+`;
 
 export const MenuElement = styled.div`
     display: flex;
     flex-direction: column;
     transition: all 0.1s ease;
-    cursor: pointer;
     align-items: center;
-`
+`;
 
 const LineAnimation = keyframes`
     0% {
@@ -37,25 +36,27 @@ const LineAnimation = keyframes`
     100% {
         width: 100%;
     }
-`
+`;
 export const MenuItems = styled.div`
     display: flex;
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
-`
+`;
 export const MenuLine = styled.div`
     height: 100%;
     background-color: #948f8f3d;
     width: 2px;
     box-shadow: 0px 0px 1px 1px #9e99991d;
     margin: 5px;
-    
-    ::before{
-        content: "";
+
+    ::before {
+        content: '';
         display: block;
-        height: ${(props) => { return 100 * props.percentage + "%"}};
+        height: ${(props) => {
+            return 100 * props.percentage + '%';
+        }};
         background-color: #d81b1b9d;
         transition: all 0.5s ease;
     }
-`
+`;
