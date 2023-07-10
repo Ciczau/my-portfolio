@@ -1,21 +1,22 @@
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
-export const Wrapper = styled(motion.div)`
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+export const Wrapper = styled(motion.section)`
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    font-family: "Poiret One";
+    font-family: 'Poiret One';
+    scroll-snap-align: start;
     align-items: center;
-`
+`;
 
 export const Title = styled.div`
     color: white;
     font-size: 50px;
     transition: all 0.3s ease;
     transform: scale(1);
-    &:hover{
+    &:hover {
         color: #880f2d;
         transition: all 0.3s ease;
         transform: translateY(-5px);
@@ -23,12 +24,11 @@ export const Title = styled.div`
     @media screen and (max-width: 767px) {
         font-size: 20px;
     }
-
-`
+`;
 
 export const Desc = styled(motion.div)`
     display: flex;
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
         font-size: 10px;
     }
-`
+`;

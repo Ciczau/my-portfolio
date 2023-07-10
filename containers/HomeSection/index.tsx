@@ -4,10 +4,7 @@ import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
 const HomeSection = () => {
     const title: string = "Hi, I'm Wiktor";
-    const [mousePosition, setMousePosition] = useState<{
-        x: number;
-        y: number;
-    }>({ x: 0, y: 0 });
+    const [visibleLetters, setVisibleLetters] = useState<number>(0);
     const constraintsRefs = useRef<
         Array<React.RefObject<HTMLDivElement> | null>
     >(Array.from(title).map(() => React.createRef()));
@@ -31,22 +28,10 @@ const HomeSection = () => {
             opacity: 1,
         },
     };
-    useEffect(() => {
-        const handleMousePos = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
-        };
-        window.addEventListener('mousemove', handleMousePos);
-        return () => {
-            window.removeEventListener('mousemove', handleMousePos);
-        };
-    });
     return (
         <S.Wrapper id="home" style={{ scale }}>
             <div
                 style={{
-                    transform: `translate(${mousePosition.x * 0.01}px, ${
-                        mousePosition.y * 0.01
-                    }px)`,
                     display: 'flex',
                     justifyContent: 'center',
                     flexDirection: 'column',
@@ -77,14 +62,6 @@ const HomeSection = () => {
                         );
                     })}
                 </motion.div>
-                <S.Desc
-                    variants={container}
-                    initial="hidden"
-                    animate="visible"
-                    style={{ color: 'white' }}
-                >
-                    FRONT END & BACK END DEVELOPER
-                </S.Desc>
             </div>
         </S.Wrapper>
     );

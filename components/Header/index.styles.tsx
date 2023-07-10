@@ -9,9 +9,7 @@ export const Wrapper = styled.div`
     z-index: 999999;
     display: flex;
     position: fixed;
-    backdrop-filter: blur(7px);
-    background-color: #5756564a;
-    box-shadow: 0px 0px 5px 3px #aaa5a528;
+
     padding: 5px;
 
     align-items: center;
@@ -56,7 +54,7 @@ export const MenuLine = styled.div`
         height: ${(props) => {
             return 100 * props.percentage + '%';
         }};
-        background-color: #d81b1b9d;
+        background-color: #5387d69d;
         transition: all 0.5s ease;
     }
 `;

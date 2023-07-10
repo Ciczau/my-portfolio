@@ -1,6 +1,6 @@
+'use client';
 import type { NextPage } from 'next';
 import { createGlobalStyle } from 'styled-components';
-import MainScreen from 'containers/MainScreen';
 import Header from 'components/Header';
 import LandingPage from 'containers/LandingPage';
 
@@ -9,21 +9,21 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        overflow-x: hidden;
+        overflow-x: none;
         ::-webkit-scrollbar{
             width: 0;
         }
+        
     }
-`
+
+`;
 
 const Home: NextPage = () => {
     return (
-        <body>
-            <main>
-                <GlobalStyle/>
-                <LandingPage/>
-            </main>
-        </body>
+        <>
+            <GlobalStyle />
+            <LandingPage />
+        </>
     );
 };
 

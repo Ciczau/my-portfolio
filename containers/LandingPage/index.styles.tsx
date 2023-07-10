@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-export const Wrapper = styled(motion.div)`
-    width: 100vw;
+export const Wrapper = styled.div`
     height: auto;
+    width: 100vw;
+    overflow: hidden;
     background-color: #020116;
     font-family: 'Poiret One';
     cursor: none;
@@ -23,9 +24,10 @@ export const CursorCircle = styled(motion.div)`
 
     z-index: 9999999;
 `;
+
 export const CursorInsideCircle = styled.div`
-    width: ${(props) => (props.pointer ? '11px' : '5px')};
-    height: ${(props) => (props.pointer ? '11px' : '5px')};
+    width: ${(props) => (props.pointer === 'true' ? '11px' : '5px')};
+    height: ${(props) => (props.pointer === 'true' ? '11px' : '5px')};
     background-color: #ffffff;
     transition: all 0.1s ease;
     border-radius: 50%;

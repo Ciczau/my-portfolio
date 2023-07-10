@@ -5,7 +5,8 @@ import AboutSection from 'containers/AboutSection';
 import ProjectsSection from 'containers/ProjectsSection';
 import ContactSection from 'containers/ContactSection';
 import HomeSection from 'containers/HomeSection';
-
+import { motion } from 'framer-motion';
+import BackgroundElement from 'components/BackgroundElement';
 const LandingPage = () => {
     const [width, setWidth] = useState<number>();
     const [mousePos, setMousePos] = useState<{ x: number; y: number }>({
@@ -13,6 +14,7 @@ const LandingPage = () => {
         y: 0,
     });
     const [pointer, setPointer] = useState<boolean>(false);
+    const [visibleLetters, setVisibleLetters] = useState<number>(0);
     useEffect(() => {
         const handleMouse = (e) => {
             setMousePos({ x: e.clientX, y: e.clientY });
@@ -26,17 +28,18 @@ const LandingPage = () => {
         setWidth(window.innerWidth);
     }, []);
     const getPointer = (data: boolean) => {
-        setPointer(data);
         console.log(data);
+        setPointer(data);
     };
     return (
         <S.Wrapper>
+            <BackgroundElement mouseX={mousePos.x} mouseY={mousePos.y} />
             {width > 767 && (
                 <>
                     <Header pointer={getPointer} />
                     <S.CursorCircle
                         animate={{ x: mousePos.x, y: mousePos.y }}
-                        pointer={pointer}
+                        pointer={pointer ? 'true' : 'false'}
                     >
                         <S.CursorInsideCircle pointer={pointer} />
                     </S.CursorCircle>
@@ -44,8 +47,8 @@ const LandingPage = () => {
             )}
             <HomeSection />
             <AboutSection />
-            <ProjectsSection />
-            <ContactSection />
+            <ProjectsSection pointer={getPointer} />
+            <ContactSection pointer={getPointer} />
         </S.Wrapper>
     );
 };

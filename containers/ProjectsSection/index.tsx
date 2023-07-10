@@ -3,7 +3,7 @@ import * as S from './index.styles';
 import { useEffect } from 'react';
 import { useTransform, useViewportScroll, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-const ProjectsSection = () => {
+const ProjectsSection = ({ pointer }) => {
     const { scrollYProgress } = useViewportScroll();
     const [ref, inView] = useInView({
         threshold: 0.15,
@@ -82,9 +82,10 @@ const ProjectsSection = () => {
                             <S.ProjectDesc>
                                 <S.ProjectInfo>
                                     <div
+                                        onMouseEnter={() => (pointer = true)}
+                                        onMouseLeave={() => (pointer = false)}
                                         style={{
                                             width: '10%',
-                                            cursor: 'pointer',
                                         }}
                                     >
                                         <FaGithub
