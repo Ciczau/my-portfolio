@@ -1,21 +1,25 @@
-import {
-    FaEnvelope,
-    FaGithub,
-    FaGithubSquare,
-    FaInstagram,
-    FaInstagramSquare,
-    FaMailBulk,
-} from 'react-icons/fa';
-import * as S from './index.styles';
 import { useState } from 'react';
+import { FaEnvelope, FaGithub, FaInstagram } from 'react-icons/fa';
+import { useRouter } from 'next/dist/client/router';
+
+import * as S from './index.styles';
+import Link from 'next/dist/client/link';
+
 const ContactSection = ({ pointer }) => {
-    const [form, setForm] = useState<{
-        name: string;
-        email: string;
-        message: string;
-    }>({ name: '', email: '', message: '' });
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [message, setMessage] = useState<string>('');
+
+    const router = useRouter();
+
+    const handleChange = (name: string, value: string) => {
+        if (name === 'name') {
+            setName(value);
+        } else if (name === 'email') {
+            setEmail(value);
+        } else if (name === 'message') {
+            setMessage(value);
+        }
     };
     const handleRedirect = (link: string) => {
         window.open(link, '_blank');
@@ -29,13 +33,17 @@ const ContactSection = ({ pointer }) => {
                         type="text"
                         placeholder="Your name"
                         name="name"
-                        onChange={handleChange}
+                        onChange={(e) =>
+                            handleChange(e.target.name, e.target.value)
+                        }
                     />
                     <S.ContactInput
                         type="text"
                         placeholder="Email"
                         name="email"
-                        onChange={handleChange}
+                        onChange={(e) =>
+                            handleChange(e.target.name, e.target.value)
+                        }
                     />
                     <S.ContactTextArea
                         name="message"
@@ -43,7 +51,9 @@ const ContactSection = ({ pointer }) => {
                         placeholder="Your question"
                         rows="5"
                         maxLength="331"
-                        onChange={handleChange}
+                        onChange={(e) =>
+                            handleChange(e.target.name, e.target.value)
+                        }
                     />
                     <S.SubmitButton type="submit" />
                 </S.ContactForm>
@@ -51,34 +61,38 @@ const ContactSection = ({ pointer }) => {
             <S.SocialMediaWrapper>
                 <S.Title>Or catch me on my social media</S.Title>
                 <S.Socials>
-                    <FaGithub
-                        color="white"
-                        onMouseEnter={() => (pointer = true)}
-                        onMouseLeave={() => (pointer = false)}
-                        size="20%"
-                        onClick={() =>
-                            handleRedirect('https://github.com/Ciczau')
-                        }
-                    />
-                    <FaInstagram
-                        color="white"
-                        onMouseEnter={() => (pointer = true)}
-                        onMouseLeave={() => (pointer = false)}
-                        size="20%"
-                        onClick={() =>
-                            handleRedirect('https://instagram.com/_wvktor_/')
-                        }
-                    />
-                    <FaEnvelope
-                        color="white"
-                        onMouseEnter={() => (pointer = true)}
-                        onMouseLeave={() => (pointer = false)}
-                        size="20%"
-                        onClick={() =>
-                            (window.location.href =
-                                'mailto:wiktor.michalski@outlook.com')
-                        }
-                    />
+                    <S.LinkElement
+                        href="https://github.com/Ciczau"
+                        target="_blank"
+                    >
+                        <FaGithub
+                            color="white"
+                            onMouseEnter={() => (pointer = true)}
+                            onMouseLeave={() => (pointer = false)}
+                            size="60%"
+                        />
+                    </S.LinkElement>
+
+                    <S.LinkElement
+                        href="https://instagram.com/_wvktor_"
+                        target="_blank"
+                    >
+                        <FaInstagram
+                            color="white"
+                            onMouseEnter={() => (pointer = true)}
+                            onMouseLeave={() => (pointer = false)}
+                            size="60%"
+                        />
+                    </S.LinkElement>
+
+                    <S.LinkElement href="mailto:wiktor.michalski@outlook.com">
+                        <FaEnvelope
+                            color="white"
+                            onMouseEnter={() => (pointer = true)}
+                            onMouseLeave={() => (pointer = false)}
+                            size="60%"
+                        />
+                    </S.LinkElement>
                 </S.Socials>
             </S.SocialMediaWrapper>
         </S.Wrapper>

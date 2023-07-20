@@ -1,8 +1,8 @@
 import { FaGithub } from 'react-icons/fa';
-import * as S from './index.styles';
-import { useEffect } from 'react';
 import { useTransform, useViewportScroll, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+
+import * as S from './index.styles';
 const ProjectsSection = ({ pointer }) => {
     const { scrollYProgress } = useViewportScroll();
     const [ref, inView] = useInView({
@@ -94,7 +94,7 @@ const ProjectsSection = ({ pointer }) => {
                                         onMouseEnter={() => (pointer = true)}
                                         onMouseLeave={() => (pointer = false)}
                                         style={{
-                                            width: '10%',
+                                            width: '6%',
                                         }}
                                     >
                                         <FaGithub

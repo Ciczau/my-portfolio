@@ -1,12 +1,14 @@
-import Header from 'components/Header';
-import * as S from './index.styles';
 import React, { useEffect, useState } from 'react';
+
 import AboutSection from 'containers/AboutSection';
 import ProjectsSection from 'containers/ProjectsSection';
 import ContactSection from 'containers/ContactSection';
+import Header from 'components/Header';
 import HomeSection from 'containers/HomeSection';
-import { motion } from 'framer-motion';
 import BackgroundElement from 'components/BackgroundElement';
+
+import * as S from './index.styles';
+
 const LandingPage = () => {
     const [width, setWidth] = useState<number>();
     const [mousePos, setMousePos] = useState<{ x: number; y: number }>({

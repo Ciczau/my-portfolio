@@ -27,6 +27,8 @@ export const ProjectsContainer = styled(motion.div)`
 export const ProjectElement = styled(motion.div)`
     color: white;
     width: 500px;
+
+    max-width: 95vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

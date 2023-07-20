@@ -1,17 +1,13 @@
 import { useState } from 'react';
-import * as S from './index.styles';
-import {
-    FaUser,
-    FaReact,
-    FaNodeJs,
-    FaMobileAlt,
-    FaBook,
-    FaLessThan,
-} from 'react-icons/fa';
-import { animate, m, useTransform, useViewportScroll } from 'framer-motion';
+import { FaReact, FaNodeJs, FaMobileAlt, FaLessThan } from 'react-icons/fa';
+import { useTransform, useViewportScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+
+import * as S from './index.styles';
 const AboutSection = () => {
     const [mouseEnter, setMouseEnter] = useState<Array<boolean>>([
+        false,
+        false,
         false,
         false,
     ]);

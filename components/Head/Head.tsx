@@ -4,7 +4,7 @@ import Head from 'next/head';
 const CustomHead = () => {
     return (
         <Head>
-            <title>title</title>
+            <title>Dev</title>
             <meta name="description" content="content" />
             <link rel="icon" href="/favicon.ico" />
         </Head>

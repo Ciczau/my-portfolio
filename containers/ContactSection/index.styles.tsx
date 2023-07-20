@@ -85,6 +85,10 @@ export const SocialMediaWrapper = styled.div`
 export const Socials = styled.div`
     display: flex;
     width: 50%;
+`;
 
-    justify-content: space-around;
+export const LinkElement = styled.a`
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;

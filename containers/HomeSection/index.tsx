@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
-import * as S from './index.styles';
+import React, { useRef, useState } from 'react';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
+
+import * as S from './index.styles';
 
 const HomeSection = () => {
     const title: string = "Hi, I'm Wiktor";
-    const [visibleLetters, setVisibleLetters] = useState<number>(0);
     const constraintsRefs = useRef<
         Array<React.RefObject<HTMLDivElement> | null>
     >(Array.from(title).map(() => React.createRef()));

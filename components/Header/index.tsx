@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './index.styles';
 import Link from 'next/link';
-
+const menuItems: Array<{ name: string; url: string }> = [
+    {
+        name: 'Home',
+        url: 'home',
+    },
+    {
+        name: 'About',
+        url: 'about',
+    },
+    {
+        name: 'Projects',
+        url: 'projects',
+    },
+    {
+        name: 'Contact',
+        url: 'contact',
+    },
+];
 const Header = ({ pointer }) => {
-    const MenuItems: Array<{ name: string; url: string }> = [
-        {
-            name: 'Home',
-            url: 'home',
-        },
-        {
-            name: 'About',
-            url: 'about',
-        },
-        {
-            name: 'Projects',
-            url: 'projects',
-        },
-        {
-            name: 'Contact',
-            url: 'contact',
-        },
-    ];
     const [visible, setVisible] = useState<string>('about');
     const [viewPercentage, setViewPercentage] = useState<number>(0);
     const handleScroll = (id: string) => {
@@ -35,7 +34,7 @@ const Header = ({ pointer }) => {
                 window.scrollY /
                 (document.documentElement.scrollHeight - window.innerHeight);
             setViewPercentage(percentage);
-            MenuItems.forEach((el) => {
+            menuItems.forEach((el) => {
                 const element = document.getElementById(el.url);
                 if (element) {
                     const rect = element.getBoundingClientRect();
@@ -63,7 +62,7 @@ const Header = ({ pointer }) => {
             <S.Menu>
                 <S.MenuLine percentage={viewPercentage} />
                 <S.MenuItems>
-                    {MenuItems.map((element, index) => {
+                    {menuItems.map((element, index) => {
                         return (
                             <S.MenuElement
                                 key={index}
