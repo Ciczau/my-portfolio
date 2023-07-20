@@ -17,21 +17,21 @@ const ProjectsSection = ({ pointer }) => {
         ghLink: string;
     }> = [
         {
-            image: './wiar.png',
+            image: '/wiar.png',
             name: 'WIAR Power',
             description:
                 'A simple coaching website, sort of a business card. It facilitates communication with clients and enables them to order services.',
             ghLink: 'https://github.com/Ciczau/WIAR',
         },
         {
-            image: './chat.png',
+            image: '/chat.png',
             name: 'Chattly',
             description:
                 'An online chat with the ability to send photos and files, created as a university project.',
-            ghLink: 'https://github.com/AleksanderLasek/Communicator',
+            ghLink: 'https://github.com/Ciczau/chattly',
         },
         {
-            image: './mobile.jpg',
+            image: '/mobile.jpg',
             name: 'Powerlifting points calculator',
             description:
                 'Simple mobile app which allows to calculate specific points in sport named powerlifting.',
@@ -74,8 +74,17 @@ const ProjectsSection = ({ pointer }) => {
                 {Projects.map((project, index) => {
                     return (
                         <S.ProjectElement
-                            image={project.image}
-                            style={{ scale }}
+                            style={{
+                                scale,
+                                background: `linear-gradient(
+                                0deg,
+                                rgba(0, 0, 0, 1) 20%,
+                                rgba(0, 0, 0, 0.3138686131386861) 51%,
+                                rgba(0, 0, 0, 1) 97%
+                            ),url(${project.image})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center top',
+                            }}
                             key={index}
                         >
                             <S.ProjectTitle>{project.name}</S.ProjectTitle>

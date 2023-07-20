@@ -25,7 +25,7 @@ export const CursorCircle = styled(motion.div)`
     z-index: 9999999;
 `;
 
-export const CursorInsideCircle = styled.div`
+export const CursorInsideCircle = styled.div<{ pointer: boolean }>`
     width: ${(props) => (props.pointer === 'true' ? '11px' : '5px')};
     height: ${(props) => (props.pointer === 'true' ? '11px' : '5px')};
     background-color: #ffffff;

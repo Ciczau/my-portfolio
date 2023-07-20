@@ -43,7 +43,7 @@ const Header = ({ pointer }) => {
                         window.innerHeight ||
                         document.documentElement.clientHeight;
                     const elementHeight = element.offsetHeight;
-                    const visibleThreshold = elementHeight * 0.7; // 70% widoczności
+                    const visibleThreshold = elementHeight * 0.7;
                     const isVisible =
                         rect.top <= windowHeight - visibleThreshold &&
                         rect.bottom >= visibleThreshold;

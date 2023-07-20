@@ -28,7 +28,6 @@ const LandingPage = () => {
         setWidth(window.innerWidth);
     }, []);
     const getPointer = (data: boolean) => {
-        console.log(data);
         setPointer(data);
     };
     return (

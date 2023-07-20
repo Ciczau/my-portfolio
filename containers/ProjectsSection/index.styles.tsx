@@ -24,22 +24,15 @@ export const ProjectsContainer = styled(motion.div)`
     justify-content: center;
 `;
 
-export const ProjectElement = styled(motion.div)<{ image: string }>`
+export const ProjectElement = styled(motion.div)`
     color: white;
     width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 0.3138686131386861) 51%,
-            rgba(0, 0, 0, 1) 97%
-        ),
-        ${(props) => `url(${props.image})`};
+
     z-index: 1;
-    background-size: cover;
-    background-position: center top;
+
     height: 400px;
     margin: 20px;
 

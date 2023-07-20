@@ -81,11 +81,9 @@ const AboutSection = () => {
         },
     ];
     const handleMouse = (index: number, type: boolean) => {
-        console.log('weszlo' + index);
         let tab = [...mouseEnter];
         tab[index] = type;
         setMouseEnter(tab);
-        console.log(tab);
     };
     return (
         <S.Wrapper id="about" style={{ scale, opacity: inView ? '1' : '0' }}>
