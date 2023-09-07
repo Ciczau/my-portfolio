@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import * as S from './index.styles';
 
 const backgroundText = 'FRONT END & BACK END DEVELOPER';
+
 const BackgroundElement = ({ mouseX, mouseY }) => {
     const [visibleLetters, setVisibleLetters] = useState<number>(0);
     const [move, setMove] = useState<boolean>(false);
@@ -41,6 +42,34 @@ const BackgroundElement = ({ mouseX, mouseY }) => {
             window.removeEventListener('scroll', handleScroll);
         };
     });
+    const renderBackgroundText = () => {
+        return (
+            <>
+                {backgroundText.split('').map((letter, index) => {
+                    return (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{
+                                opacity: index < visibleLetters ? 1 : 0,
+                                position:
+                                    index < visibleLetters
+                                        ? 'relative'
+                                        : 'absolute',
+                            }}
+                            key={index}
+                            style={{ color: 'white' }}
+                        >
+                            {letter === ' ' ? (
+                                <div>&nbsp;</div>
+                            ) : (
+                                <div>{letter}</div>
+                            )}
+                        </motion.div>
+                    );
+                })}
+            </>
+        );
+    };
     return (
         <S.Wrapper
             move={move}
@@ -50,34 +79,17 @@ const BackgroundElement = ({ mouseX, mouseY }) => {
                 y: mouseY * 0.01,
             }}
         >
-            <div style={{ color: 'grey' }}>&lt;</div>
-            <div style={{ color: '#217fb6' }}>div</div>
-            <div style={{ color: 'grey' }}>&gt;</div>
-            {backgroundText.split('').map((letter, index) => {
-                return (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{
-                            opacity: index < visibleLetters ? 1 : 0,
-                            position:
-                                index < visibleLetters
-                                    ? 'relative'
-                                    : 'absolute',
-                        }}
-                        key={index}
-                        style={{ color: 'white' }}
-                    >
-                        {letter === ' ' ? (
-                            <div>&nbsp;</div>
-                        ) : (
-                            <div>{letter}</div>
-                        )}
-                    </motion.div>
-                );
-            })}
-            <div style={{ color: 'grey' }}>&lt;/</div>
-            <div style={{ color: '#217fb6' }}>div</div>
-            <div style={{ color: 'grey' }}>&gt;</div>
+            <S.TagWrapper>
+                <p>&lt;</p>
+                <div>div</div>
+                <p>&gt;</p>
+            </S.TagWrapper>
+            {renderBackgroundText()}
+            <S.TagWrapper>
+                <p>&lt;/</p>
+                <div>div</div>
+                <p>&gt;</p>
+            </S.TagWrapper>
         </S.Wrapper>
     );
 };

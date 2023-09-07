@@ -17,7 +17,7 @@ const AboutSection = () => {
         triggerOnce: true,
     });
     const scale = useTransform(scrollYProgress, [0, 0.3], [1.3, 1]);
-    const ExperienceItems: Array<{
+    const experienceItems: Array<{
         icon: React.ReactNode;
         description: string;
         animate: boolean;
@@ -81,10 +81,11 @@ const AboutSection = () => {
         tab[index] = type;
         setMouseEnter(tab);
     };
-    return (
-        <S.Wrapper id="about" style={{ scale, opacity: inView ? '1' : '0' }}>
+
+    const renderExperience = () => {
+        return (
             <S.ExperienceWrapper ref={ref}>
-                {ExperienceItems.map((exp, index) => {
+                {experienceItems.map((exp, index) => {
                     return (
                         <S.ExperienceContainer
                             onMouseEnter={() => handleMouse(index, true)}
@@ -121,6 +122,11 @@ const AboutSection = () => {
                     );
                 })}
             </S.ExperienceWrapper>
+        );
+    };
+    return (
+        <S.Wrapper id="about" style={{ scale, opacity: inView ? '1' : '0' }}>
+            {renderExperience()}
         </S.Wrapper>
     );
 };

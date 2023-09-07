@@ -26,7 +26,7 @@ const ProjectsSection = ({ pointer }) => {
             description:
                 'The Next.js Twitter Clone is a cutting-edge social media application designed to mimic the popular Twitter platform.',
             ghLink: 'https://github.com/Ciczau/twitter-app',
-            pageLink: 'https://twitter-c925t9zgw-ciczau-s-team.vercel.app/',
+            pageLink: 'https://twitter-app-one.vercel.app',
         },
         {
             image: '/chat.png',
@@ -47,40 +47,13 @@ const ProjectsSection = ({ pointer }) => {
     const handleRedirect = (link: string) => {
         window.open(link, '_blank');
     };
-
-    const cardVariants: Variants = {
-        offscreen: {
-            y: 100,
-        },
-        onscreen: {
-            y: 20,
-            rotate: -10,
-            transition: {
-                type: 'spring',
-                bounce: 0.4,
-                duration: 5,
-            },
-        },
-    };
-    const vari: Variants = {
-        offscreen: {
-            y: 330,
-        },
-        onscreen: {
-            y: 30,
-            transition: {
-                duration: 3.0,
-            },
-        },
-    };
     const redirectToPage = (link: string) => {
         if (link) {
             router.push(link);
         }
     };
-    return (
-        <S.Wrapper id="projects" style={{ opacity: inView ? '1' : '0' }}>
-            <S.Title>My latest projects</S.Title>
+    const renderProjects = () => {
+        return (
             <S.ProjectsContainer ref={ref}>
                 {Projects.map((project, index) => {
                     return (
@@ -88,11 +61,11 @@ const ProjectsSection = ({ pointer }) => {
                             style={{
                                 scale,
                                 background: `linear-gradient(
-                                0deg,
-                                rgba(0, 0, 0, 1) 20%,
-                                rgba(0, 0, 0, 0.3138686131386861) 51%,
-                                rgba(0, 0, 0, 1) 97%
-                            ),url(${project.image})`,
+                            0deg,
+                            rgba(0, 0, 0, 1) 20%,
+                            rgba(0, 0, 0, 0.3138686131386861) 51%,
+                            rgba(0, 0, 0, 1) 97%
+                        ),url(${project.image})`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center top',
                             }}
@@ -125,6 +98,12 @@ const ProjectsSection = ({ pointer }) => {
                     );
                 })}
             </S.ProjectsContainer>
+        );
+    };
+    return (
+        <S.Wrapper id="projects" style={{ opacity: inView ? '1' : '0' }}>
+            <S.Title>My latest projects</S.Title>
+            {renderProjects()}
         </S.Wrapper>
     );
 };

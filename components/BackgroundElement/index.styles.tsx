@@ -12,3 +12,12 @@ export const Wrapper = styled(motion.div)`
 
     z-index: 1;
 `;
+export const TagWrapper = styled.div`
+    display: flex;
+    div {
+        color: #217fb6;
+    }
+    p {
+        color: gray;
+    }
+`;

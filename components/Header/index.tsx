@@ -23,7 +23,7 @@ const Header = ({ pointer }) => {
     const [visible, setVisible] = useState<string>('about');
     const [viewPercentage, setViewPercentage] = useState<number>(0);
     const handleScroll = (id: string) => {
-        var element = document.getElementById(id);
+        const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
@@ -57,28 +57,32 @@ const Header = ({ pointer }) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    const renderMenuElements = () => {
+        return (
+            <>
+                {menuItems.map((element, index) => {
+                    return (
+                        <S.MenuElement
+                            key={index}
+                            onClick={() => handleScroll(element.url)}
+                            style={{
+                                fontWeight: visible === element.url && 'bold',
+                            }}
+                            onMouseEnter={() => pointer(true)}
+                            onMouseLeave={() => pointer(false)}
+                        >
+                            {element.name}
+                        </S.MenuElement>
+                    );
+                })}
+            </>
+        );
+    };
     return (
         <S.Wrapper>
             <S.Menu>
                 <S.MenuLine percentage={viewPercentage} />
-                <S.MenuItems>
-                    {menuItems.map((element, index) => {
-                        return (
-                            <S.MenuElement
-                                key={index}
-                                onClick={() => handleScroll(element.url)}
-                                style={{
-                                    fontWeight:
-                                        visible === element.url && 'bold',
-                                }}
-                                onMouseEnter={() => pointer(true)}
-                                onMouseLeave={() => pointer(false)}
-                            >
-                                {element.name}
-                            </S.MenuElement>
-                        );
-                    })}
-                </S.MenuItems>
+                <S.MenuItems>{renderMenuElements()}</S.MenuItems>
             </S.Menu>
         </S.Wrapper>
     );

@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import { FaEnvelope, FaGithub, FaInstagram } from 'react-icons/fa';
-import { useRouter } from 'next/dist/client/router';
 
 import * as S from './index.styles';
-import Link from 'next/dist/client/link';
 
 const ContactSection = ({ pointer }) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [message, setMessage] = useState<string>('');
-
-    const router = useRouter();
 
     const handleChange = (name: string, value: string) => {
         if (name === 'name') {
@@ -21,9 +17,7 @@ const ContactSection = ({ pointer }) => {
             setMessage(value);
         }
     };
-    const handleRedirect = (link: string) => {
-        window.open(link, '_blank');
-    };
+
     return (
         <S.Wrapper id="contact">
             <S.ContactWrapper>

@@ -28,6 +28,34 @@ const HomeSection = () => {
             opacity: 1,
         },
     };
+    const renderTitle = () => {
+        return (
+            <motion.div
+                variants={container}
+                initial="hidden"
+                animate="visible"
+                style={{ display: 'flex' }}
+            >
+                {Array.from(title).map((el, index) => {
+                    return (
+                        <S.Title key={index}>
+                            <motion.div
+                                ref={constraintsRefs.current[index]}
+                                drag
+                                variants={item}
+                            >
+                                {el === ' ' ? (
+                                    <div>&nbsp;</div>
+                                ) : (
+                                    <div>{el}</div>
+                                )}
+                            </motion.div>
+                        </S.Title>
+                    );
+                })}
+            </motion.div>
+        );
+    };
     return (
         <S.Wrapper id="home" style={{ scale }}>
             <div
@@ -38,30 +66,7 @@ const HomeSection = () => {
                     alignItems: 'center',
                 }}
             >
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    animate="visible"
-                    style={{ display: 'flex' }}
-                >
-                    {Array.from(title).map((el, index) => {
-                        return (
-                            <S.Title key={index}>
-                                <motion.div
-                                    ref={constraintsRefs.current[index]}
-                                    drag
-                                    variants={item}
-                                >
-                                    {el === ' ' ? (
-                                        <div>&nbsp;</div>
-                                    ) : (
-                                        <div>{el}</div>
-                                    )}
-                                </motion.div>
-                            </S.Title>
-                        );
-                    })}
-                </motion.div>
+                {renderTitle()}
             </div>
         </S.Wrapper>
     );

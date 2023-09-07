@@ -16,7 +16,7 @@ const LandingPage = () => {
         y: 0,
     });
     const [pointer, setPointer] = useState<boolean>(false);
-    const [visibleLetters, setVisibleLetters] = useState<number>(0);
+
     useEffect(() => {
         const handleMouse = (e) => {
             setMousePos({ x: e.clientX, y: e.clientY });
