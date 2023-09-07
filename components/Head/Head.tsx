@@ -4,8 +4,11 @@ import Head from 'next/head';
 const CustomHead = () => {
     return (
         <Head>
-            <title>Dev</title>
-            <meta name="description" content="content" />
+            <title>Wiktor Michalski</title>
+            <meta
+                name="description"
+                content="Full-stack developer specialized in TypeScript, React and Node.js"
+            />
             <link rel="icon" href="/favicon.ico" />
         </Head>
     );

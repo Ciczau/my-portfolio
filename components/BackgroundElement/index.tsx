@@ -57,7 +57,6 @@ const BackgroundElement = ({ mouseX, mouseY }) => {
                                         : 'absolute',
                             }}
                             key={index}
-                            style={{ color: 'white' }}
                         >
                             {letter === ' ' ? (
                                 <div>&nbsp;</div>

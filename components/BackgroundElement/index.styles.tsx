@@ -4,6 +4,7 @@ export const Wrapper = styled(motion.div)`
     display: flex;
     position: fixed;
     width: 100vw;
+    color: white;
     justify-content: center;
     font-size: 4.5vw;
     bottom: ${(props) => (props.move ? '50px' : '80vh')};
