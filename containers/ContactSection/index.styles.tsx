@@ -53,7 +53,7 @@ export const ContactTextArea = styled.textarea`
     font-family: 'Martian Mono';
 `;
 
-export const SubmitButton = styled.input`
+export const SubmitButton = styled.button`
     padding: 6px 12px;
     font-size: 20px;
     font-weight: bold;
