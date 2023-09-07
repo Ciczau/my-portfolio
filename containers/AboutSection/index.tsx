@@ -107,16 +107,7 @@ const AboutSection = () => {
                                 </S.IconWrapper>
                             </div>
                             {mouseEnter[index] && (
-                                <div
-                                    style={{
-                                        position: 'absolute',
-                                        width: '250px',
-                                        fontSize: '1.6rem',
-                                        textAlign: 'center',
-                                    }}
-                                >
-                                    {exp.description}
-                                </div>
+                                <S.Description>{exp.description}</S.Description>
                             )}
                         </S.ExperienceContainer>
                     );

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { FaGithub } from 'react-icons/fa';
 import styled from 'styled-components';
 
 export const Wrapper = styled(motion.section)`
@@ -27,20 +28,26 @@ export const ProjectsContainer = styled(motion.div)`
 export const ProjectElement = styled(motion.div)`
     color: white;
     width: 500px;
-
     max-width: 95vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     z-index: 1;
-
     height: 400px;
     margin: 20px;
-
     box-shadow: 0px 0px 5px 3px #79797976;
     border: 1px solid white;
     transition: all 0.3s ease-in-out;
+    background: ${(props) =>
+        props.image &&
+        `linear-gradient(
+                            0deg,
+                            rgba(0, 0, 0, 1) 20%,
+                            rgba(0, 0, 0, 0.3138686131386861) 51%,
+                            rgba(0, 0, 0, 1) 97%
+                        ),url(${props.image})`};
+    background-size: cover;
+    background-position: center top;
     &:hover {
         height: 500px;
     }
@@ -70,6 +77,14 @@ export const ProjectDesc = styled.div`
 
 export const ProjectInfo = styled.div`
     display: flex;
+    align-items: center;
     justify-content: space-around;
     font-size: 13px;
+    div {
+        width: 80%;
+    }
+`;
+export const GithubIcon = styled(FaGithub)`
+    width: 40px;
+    cursor: pointer;
 `;

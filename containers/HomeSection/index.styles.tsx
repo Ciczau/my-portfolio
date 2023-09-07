@@ -11,7 +11,7 @@ export const Wrapper = styled(motion.section)`
     align-items: center;
 `;
 
-export const Title = styled.div`
+export const Letter = styled.div`
     color: white;
     font-size: 50px;
     transition: all 0.3s ease;
@@ -25,7 +25,9 @@ export const Title = styled.div`
         font-size: 20px;
     }
 `;
-
+export const TitleWrapper = styled(motion.div)`
+    display: flex;
+`;
 export const Desc = styled(motion.div)`
     display: flex;
     @media screen and (max-width: 767px) {

@@ -47,3 +47,9 @@ export const IconWrapper = styled.div`
     animation-timing-function: linear;
     height: 100%;
 `;
+export const Description = styled.div`
+    position: absolute;
+    width: 250px;
+    font-size: 1.6rem;
+    text-align: center;
+`;

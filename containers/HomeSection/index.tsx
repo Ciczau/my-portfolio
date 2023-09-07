@@ -1,15 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
 import * as S from './index.styles';
 
+const title: string = "Hi, I'm Wiktor";
+
 const HomeSection = () => {
-    const title: string = "Hi, I'm Wiktor";
     const constraintsRefs = useRef<
         Array<React.RefObject<HTMLDivElement> | null>
     >(Array.from(title).map(() => React.createRef()));
+
     const { scrollYProgress } = useViewportScroll();
     const scale = useTransform(scrollYProgress, [0, 1], [2, -1]);
+
     const container = {
         hidden: { opacity: 1, scale: 0 },
         visible: {
@@ -30,15 +33,14 @@ const HomeSection = () => {
     };
     const renderTitle = () => {
         return (
-            <motion.div
+            <S.TitleWrapper
                 variants={container}
                 initial="hidden"
                 animate="visible"
-                style={{ display: 'flex' }}
             >
                 {Array.from(title).map((el, index) => {
                     return (
-                        <S.Title key={index}>
+                        <S.Letter key={index}>
                             <motion.div
                                 ref={constraintsRefs.current[index]}
                                 drag
@@ -50,24 +52,15 @@ const HomeSection = () => {
                                     <div>{el}</div>
                                 )}
                             </motion.div>
-                        </S.Title>
+                        </S.Letter>
                     );
                 })}
-            </motion.div>
+            </S.TitleWrapper>
         );
     };
     return (
         <S.Wrapper id="home" style={{ scale }}>
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-                {renderTitle()}
-            </div>
+            {renderTitle()}
         </S.Wrapper>
     );
 };

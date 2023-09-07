@@ -60,38 +60,24 @@ const ProjectsSection = ({ pointer }) => {
                         <S.ProjectElement
                             style={{
                                 scale,
-                                background: `linear-gradient(
-                            0deg,
-                            rgba(0, 0, 0, 1) 20%,
-                            rgba(0, 0, 0, 0.3138686131386861) 51%,
-                            rgba(0, 0, 0, 1) 97%
-                        ),url(${project.image})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center top',
                             }}
+                            image={project.image}
                             onClick={() => redirectToPage(project.pageLink)}
                             key={index}
                         >
                             <S.ProjectTitle>{project.name}</S.ProjectTitle>
                             <S.ProjectDesc>
                                 <S.ProjectInfo>
-                                    <div
+                                    <S.GithubIcon
+                                        size="100%"
+                                        onClick={() =>
+                                            handleRedirect(project.ghLink)
+                                        }
                                         onMouseEnter={() => (pointer = true)}
                                         onMouseLeave={() => (pointer = false)}
-                                        style={{
-                                            width: '6%',
-                                        }}
-                                    >
-                                        <FaGithub
-                                            size="100%"
-                                            onClick={() =>
-                                                handleRedirect(project.ghLink)
-                                            }
-                                        />
-                                    </div>
-                                    <div style={{ width: '80%' }}>
-                                        {project.description}
-                                    </div>
+                                    />
+
+                                    <div>{project.description}</div>
                                 </S.ProjectInfo>
                             </S.ProjectDesc>
                         </S.ProjectElement>

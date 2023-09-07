@@ -49,7 +49,7 @@ const ContactSection = ({ pointer }) => {
                             handleChange(e.target.name, e.target.value)
                         }
                     />
-                    <S.SubmitButton type="submit" />
+                    <S.SubmitButton type="submit" value="Send" />
                 </S.ContactForm>
             </S.ContactWrapper>
             <S.SocialMediaWrapper>
