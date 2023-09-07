@@ -3,8 +3,11 @@ import { useTransform, useViewportScroll, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import * as S from './index.styles';
+import { useRouter } from 'next/dist/client/router';
 const ProjectsSection = ({ pointer }) => {
     const { scrollYProgress } = useViewportScroll();
+
+    const router = useRouter();
     const [ref, inView] = useInView({
         threshold: 0.15,
         triggerOnce: true,
@@ -15,13 +18,15 @@ const ProjectsSection = ({ pointer }) => {
         name: string;
         description: string;
         ghLink: string;
+        pageLink?: string;
     }> = [
         {
-            image: '/wiar.png',
-            name: 'WIAR Power',
+            image: '/twitter.png',
+            name: 'Twitter clon',
             description:
-                'A simple coaching website, sort of a business card. It facilitates communication with clients and enables them to order services.',
-            ghLink: 'https://github.com/Ciczau/WIAR',
+                'The Next.js Twitter Clone is a cutting-edge social media application designed to mimic the popular Twitter platform.',
+            ghLink: 'https://github.com/Ciczau/twitter-app',
+            pageLink: 'https://twitter-c925t9zgw-ciczau-s-team.vercel.app/',
         },
         {
             image: '/chat.png',
@@ -30,11 +35,12 @@ const ProjectsSection = ({ pointer }) => {
                 'An online chat with the ability to send photos and files, created as a university project.',
             ghLink: 'https://github.com/Ciczau/chattly',
         },
+
         {
-            image: '/mobile.jpg',
-            name: 'Powerlifting points calculator',
+            image: '/wiar.png',
+            name: 'WIAR Power',
             description:
-                'Simple mobile app which allows to calculate specific points in sport named powerlifting.',
+                'A simple coaching website, sort of a business card. It facilitates communication with clients and enables them to order services.',
             ghLink: 'https://github.com/Ciczau/WIAR',
         },
     ];
@@ -67,6 +73,11 @@ const ProjectsSection = ({ pointer }) => {
             },
         },
     };
+    const redirectToPage = (link: string) => {
+        if (link) {
+            router.push(link);
+        }
+    };
     return (
         <S.Wrapper id="projects" style={{ opacity: inView ? '1' : '0' }}>
             <S.Title>My latest projects</S.Title>
@@ -85,6 +96,7 @@ const ProjectsSection = ({ pointer }) => {
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center top',
                             }}
+                            onClick={() => redirectToPage(project.pageLink)}
                             key={index}
                         >
                             <S.ProjectTitle>{project.name}</S.ProjectTitle>
