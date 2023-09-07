@@ -30,7 +30,7 @@ export const ContactInput = styled.input`
     max-width: 500px;
     border-radius: 7px;
     outline: 0;
-    border: 0;
+    border: ${(props) => (props.valid ? '0' : '1px solid red')};
     font-family: 'Martian Mono';
     z-index: 2;
     margin: 10px;
@@ -44,6 +44,7 @@ export const ContactTextArea = styled.textarea`
     padding: 10px;
     z-index: 2;
     width: 90vw;
+    border: ${(props) => (props.valid ? '0' : '1px solid red')};
     max-width: 500px;
     height: auto;
     outline: 0;

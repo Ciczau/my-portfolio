@@ -8,6 +8,10 @@ const ContactSection = ({ pointer }) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [message, setMessage] = useState<string>('');
+    const [validName, setValidName] = useState<boolean>(true);
+    const [validEmail, setValidEmail] = useState<boolean>(true);
+    const [validMessage, setValidMessage] = useState<boolean>(true);
+
     const [success, setSuccess] = useState<boolean>(false);
 
     const handleChange = (name: string, value: string) => {
@@ -20,6 +24,9 @@ const ContactSection = ({ pointer }) => {
         }
     };
     const sendQuestion = async () => {
+        setValidName(name !== '' ? true : false);
+        setValidEmail(email !== '' ? true : false);
+        setValidMessage(message !== '' ? true : false);
         try {
             const res = await axios.post(
                 'https://ciczau-twitter-backend-e83fca20f698.herokuapp.com/portfolio/question/send',
@@ -28,7 +35,9 @@ const ContactSection = ({ pointer }) => {
             if (res.status === 200) {
                 setSuccess(true);
             }
-        } catch (err) {}
+        } catch (err) {
+            console.log(err);
+        }
     };
     return (
         <S.Wrapper id="contact">
@@ -42,6 +51,7 @@ const ContactSection = ({ pointer }) => {
                             type="text"
                             placeholder="Your name"
                             name="name"
+                            valid={validName}
                             onChange={(e) =>
                                 handleChange(e.target.name, e.target.value)
                             }
@@ -50,6 +60,7 @@ const ContactSection = ({ pointer }) => {
                             type="text"
                             placeholder="Email"
                             name="email"
+                            valid={validEmail}
                             onChange={(e) =>
                                 handleChange(e.target.name, e.target.value)
                             }
@@ -59,15 +70,14 @@ const ContactSection = ({ pointer }) => {
                             type="text"
                             placeholder="Your question"
                             rows="5"
+                            valid={validMessage}
                             maxLength="331"
                             onChange={(e) =>
                                 handleChange(e.target.name, e.target.value)
                             }
                         />
-                        <S.SubmitButton onClick={sendQuestion}>
-                            Send
-                        </S.SubmitButton>
                     </S.ContactForm>
+                    <S.SubmitButton onClick={sendQuestion}>Send</S.SubmitButton>
                 </S.ContactWrapper>
             )}
             <S.SocialMediaWrapper>
