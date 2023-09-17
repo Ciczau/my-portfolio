@@ -44,6 +44,7 @@ export const ContactTextArea = styled.textarea`
     padding: 10px;
     z-index: 2;
     width: 90vw;
+    cursor: none;
     border: ${(props) => (props.valid ? '0' : '1px solid red')};
     max-width: 500px;
     height: auto;
@@ -54,7 +55,7 @@ export const ContactTextArea = styled.textarea`
     font-family: 'Martian Mono';
 `;
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.input`
     padding: 6px 12px;
     font-size: 20px;
     font-weight: bold;

@@ -3,38 +3,26 @@ import { FaEnvelope, FaGithub, FaInstagram } from 'react-icons/fa';
 import axios from 'axios';
 
 import * as S from './index.styles';
+import { useForm } from 'react-hook-form';
 
 const ContactSection = ({ pointer }) => {
-    const [name, setName] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [message, setMessage] = useState<string>('');
-    const [validName, setValidName] = useState<boolean>(true);
-    const [validEmail, setValidEmail] = useState<boolean>(true);
-    const [validMessage, setValidMessage] = useState<boolean>(true);
-
     const [success, setSuccess] = useState<boolean>(false);
 
-    const handleChange = (name: string, value: string) => {
-        if (name === 'name') {
-            setName(value);
-        } else if (name === 'email') {
-            setEmail(value);
-        } else if (name === 'message') {
-            setMessage(value);
-        }
-    };
-    const sendQuestion = async () => {
-        setValidName(name !== '' ? true : false);
-        setValidEmail(email !== '' ? true : false);
-        setValidMessage(message !== '' ? true : false);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const sendQuestion = async (data) => {
+        console.log(data);
         try {
-            const res = await axios.post(
+            await axios.post(
                 'https://ciczau-twitter-backend-e83fca20f698.herokuapp.com/portfolio/question/send',
-                { name: name, email: email, message: message }
+                { name: data.name, email: data.email, message: data.message }
             );
-            if (res.status === 200) {
-                setSuccess(true);
-            }
+
+            setSuccess(true);
         } catch (err) {
             console.log(err);
         }
@@ -46,38 +34,40 @@ const ContactSection = ({ pointer }) => {
             ) : (
                 <S.ContactWrapper>
                     <S.Title>Contact me if you have any questions</S.Title>
-                    <S.ContactForm>
+                    <S.ContactForm onSubmit={handleSubmit(sendQuestion)}>
                         <S.ContactInput
                             type="text"
                             placeholder="Your name"
-                            name="name"
-                            valid={validName}
-                            onChange={(e) =>
-                                handleChange(e.target.name, e.target.value)
-                            }
+                            {...register('name', {
+                                required: 'Required',
+                                maxLength: 30,
+                            })}
+                            valid={!errors.name}
                         />
                         <S.ContactInput
                             type="text"
                             placeholder="Email"
-                            name="email"
-                            valid={validEmail}
-                            onChange={(e) =>
-                                handleChange(e.target.name, e.target.value)
-                            }
+                            {...register('email', {
+                                required: 'Required',
+                                pattern:
+                                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                maxLength: 50,
+                            })}
+                            valid={!errors.email}
                         />
                         <S.ContactTextArea
-                            name="message"
                             type="text"
                             placeholder="Your question"
                             rows="5"
-                            valid={validMessage}
                             maxLength="331"
-                            onChange={(e) =>
-                                handleChange(e.target.name, e.target.value)
-                            }
+                            {...register('message', {
+                                required: 'Required',
+                                maxLength: 331,
+                            })}
+                            valid={!errors.message}
                         />
+                        <S.SubmitButton type="submit" value="Send" />
                     </S.ContactForm>
-                    <S.SubmitButton onClick={sendQuestion}>Send</S.SubmitButton>
                 </S.ContactWrapper>
             )}
             <S.SocialMediaWrapper>
