@@ -8,7 +8,7 @@ export const Wrapper = styled(motion.div)`
     justify-content: center;
     font-size: 4.5vw;
     bottom: ${(props) => (props.move ? '50px' : '80vh')};
-    opacity: ${(props) => (props.opacity ? '0.2' : '0.7')};
+    opacity: ${(props) => (props.opacity ? '0.1' : '0.25')};
     transition: opacity 0.3s ease, bottom 0.5s ease;
 
     z-index: 0;
