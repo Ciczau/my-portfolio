@@ -36,7 +36,7 @@ export const ProjectElement = styled(motion.div)`
     height: 400px;
     margin: 20px;
     box-shadow: 0px 0px 5px 3px #79797976;
-    border: 1px solid white;
+
     transition: all 0.3s ease-in-out;
     background: ${(props) =>
         props.image &&
@@ -46,10 +46,11 @@ export const ProjectElement = styled(motion.div)`
                             rgba(0, 0, 0, 0.3138686131386861) 51%,
                             rgba(0, 0, 0, 1) 97%
                         ),url(${props.image})`};
-    background-size: cover;
+    background-size: 130%;
     background-position: center top;
     &:hover {
-        height: 500px;
+        box-shadow: 0px 0px 5px 3px #d3d2d276;
+        background-size: 150%;
     }
 `;
 

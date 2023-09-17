@@ -11,7 +11,7 @@ export const Wrapper = styled(motion.div)`
     opacity: ${(props) => (props.opacity ? '0.2' : '0.7')};
     transition: opacity 0.3s ease, bottom 0.5s ease;
 
-    z-index: 1;
+    z-index: 0;
 `;
 export const TagWrapper = styled.div`
     display: flex;

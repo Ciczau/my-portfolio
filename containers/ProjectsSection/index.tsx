@@ -1,9 +1,11 @@
-import { FaGithub } from 'react-icons/fa';
-import { useTransform, useViewportScroll, Variants } from 'framer-motion';
+import { useTransform, useViewportScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useRouter } from 'next/dist/client/router';
+
+import { projects } from 'components/projects';
 
 import * as S from './index.styles';
-import { useRouter } from 'next/dist/client/router';
+
 const ProjectsSection = ({ pointer }) => {
     const { scrollYProgress } = useViewportScroll();
 
@@ -13,37 +15,6 @@ const ProjectsSection = ({ pointer }) => {
         triggerOnce: true,
     });
     const scale = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
-    const Projects: Array<{
-        image: string;
-        name: string;
-        description: string;
-        ghLink: string;
-        pageLink?: string;
-    }> = [
-        {
-            image: '/twitter.png',
-            name: 'Twitter clon',
-            description:
-                'The Next.js Twitter Clone is a cutting-edge social media application designed to mimic the popular Twitter platform.',
-            ghLink: 'https://github.com/Ciczau/twitter-app',
-            pageLink: 'https://twitter-app-one.vercel.app',
-        },
-        {
-            image: '/chat.png',
-            name: 'Chattly',
-            description:
-                'An online chat with the ability to send photos and files, created as a university project.',
-            ghLink: 'https://github.com/Ciczau/chattly',
-        },
-
-        {
-            image: '/wiar.png',
-            name: 'WIAR Power',
-            description:
-                'A simple coaching website, sort of a business card. It facilitates communication with clients and enables them to order services.',
-            ghLink: 'https://github.com/Ciczau/WIAR',
-        },
-    ];
     const handleRedirect = (link: string) => {
         window.open(link, '_blank');
     };
@@ -55,7 +26,7 @@ const ProjectsSection = ({ pointer }) => {
     const renderProjects = () => {
         return (
             <S.ProjectsContainer ref={ref}>
-                {Projects.map((project, index) => {
+                {projects.map((project, index) => {
                     return (
                         <S.ProjectElement
                             style={{
