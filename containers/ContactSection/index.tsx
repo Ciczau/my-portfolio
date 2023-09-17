@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { FaEnvelope, FaGithub, FaInstagram } from 'react-icons/fa';
 import axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 import * as S from './index.styles';
-import { useForm } from 'react-hook-form';
 
 const ContactSection = ({ pointer }) => {
     const [success, setSuccess] = useState<boolean>(false);
@@ -15,7 +15,6 @@ const ContactSection = ({ pointer }) => {
     } = useForm();
 
     const sendQuestion = async (data) => {
-        console.log(data);
         try {
             await axios.post(
                 'https://ciczau-twitter-backend-e83fca20f698.herokuapp.com/portfolio/question/send',
